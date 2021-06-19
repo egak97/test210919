@@ -1,4 +1,3 @@
-
 /* eslint-disable no-undef */
 var chai = require('chai');
 var chaiWebdriver = require('chai-webdriverio').default;
@@ -96,16 +95,55 @@ export default class Page {
     element.setValue(value);
   }
 
+  elementShouldHaveAttributeValue(element, attributeName, value) {
+    this.waitElementDisplayed(element);
+    const res = this.getAttributeValue(attributeName);
+    expect(res).equals(value);
+  }
+
   elementShouldNotClickable(element) {
     this.isElementClickable(element).should.be.false;
+  }
+
+  alertShouldDisplayed(){
+    browser.isAlertOpen();
+    browser.acceptAlert();
+  }
+
+  alertShouldHaveText(text) {
+    this.alertShouldDisplayed();
+    const alertText = browser.getAlertText();
+    expect(alertText).to.have.text(text);
   }
 
   elementDragAndDrop(element, target) {
     element.dragAndDrop(target);
   }
 
+  enterBrowser(){
+    browser.keys(['\ue007']);
+  }
+
+  switchWindowViaTitle(url){
+    browser.waitUntil( 
+      () => browser.switchWindow(url),
+      {
+        timeout: timeout,
+        timeoutMsg: 'expected window to be show after 10s',
+      }
+    )
+  }
+
   getElementValue(element) {
     return element.getValue();
+  }
+
+  getAttributeValue(element, attributeName) {
+    return element.getAttribute(attributeName);
+  }
+
+  getElementText(element) {
+    return element.getText();
   }
 
 }

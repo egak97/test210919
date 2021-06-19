@@ -17,7 +17,7 @@ When(/^user click login$/, () => {
     login.clickButtonLogin();
 });
 
-When(/^user click ([^"]*)$/, (input) => {
+When(/^user click login with ([^"]*)$/, (input) => {
     if(input === 'Facebook') {
         login.clickButtonFacebook();
     }
@@ -26,6 +26,18 @@ When(/^user click ([^"]*)$/, (input) => {
     }
 });
 
+Then(/^user redirected to ([^"]*) link$/, (input) => {
+    if(input === 'Facebook') {
+        login.validateNewFacebookLoginPage();
+    }
+    else if (input === 'Google'){
+        login.validateNewGoogleLoginPage(); 
+    }
+});
 Then(/^user redirected to homepage$/, () => {
     login.validateURLHomepage();
+});
+
+Then(/^user see login page fields$/, () => {
+    login.verifyLoginPage();
 });
