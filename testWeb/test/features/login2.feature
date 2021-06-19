@@ -12,5 +12,5 @@ Then user redirected to homepage
 Examples:
     | credential | userCred           | password          |
     | Email      | egakr97@gmail.com  | testBukalapak123  |
-    # | Username   | ega_k_637464       | testBukalapak123  |
+    | Username   | ega_k_637464       | testBukalapak123  |
     # | Phone      | 082236826986       | testBukalapak123  |
