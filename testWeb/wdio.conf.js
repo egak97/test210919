@@ -22,9 +22,6 @@ exports.config = {
     // according to your user and key information. However, if you are using a private Selenium
     // backend you should define the host address, port, and path here.
     //
-    // hostname: 'localhost',
-    // port: 4003,
-    // path: '/wd/hub',
     //
     // ==================
     // Specify Test Files
@@ -86,7 +83,7 @@ exports.config = {
                 '--disable-notifications=true',
             ],
         },
-        // 'selenoid:options': { enableVNC: true }
+        'selenoid:options': { enableVNC: false }
         // If outputDir is provided WebdriverIO can capture driver session logs
         // it is possible to configure which logTypes to include/exclude.
         // excludeDriverLogs: ['*'], // pass '*' to exclude all driver session logs
